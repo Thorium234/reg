@@ -1,0 +1,16 @@
+{% extends 'item/base.html' %}
+
+{% block content %}
+
+{% if instance.pk %}EDIT ITEM
+   {% else %} Add Item
+{% endif %}
+
+
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p  }}
+    <button type="submit">Save</button>
+    <button><a href="{% url 'item_list' %}"></a>Cancel</button>
+</form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'item/base.html' %}
+
+{% block content %}
+    
+
+<p>
+    Are you tired with this page logout <a href="{% url 'logout' %}">here</a> <br> <br>
+    ADD an item click <a href="{% url 'item_add' %}">here</a>
+</p>
+
+
+    <h4>ITEM LIST</h4>
+    {% if item %}
+        <table>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in item %}
+                <tr>  
+                    <td>{{ i.item_name }}</td>
+                    <td>{{ i.item_price }}</td>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <a href="{% url 'item_delete' i.id %}">delete</a>
+                        <a href="{% url 'item_edit' i.id %}">edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        
+    {% else %}
+        <h3>No items aded yet</h3>
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,8 @@
+<p>
+    Are you sure you want to delete {{ item.item_name }}
+</p>
+<form action="." method="post">
+    {% csrf_token %}
+    <button type="submit">cornform</button>
+    <button><a href="{% url 'item_list' %}"></a>Cancel</button>
+</form>
